@@ -1,0 +1,9 @@
+{
+  "entrypoints": "0x0000000071727De22E5E9d8BAf0edAc6f37da032,0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
+  "entrypoint-simulation-contract": "0x74cb5e4ee81b86e70f9045036a1c5477de69ee87",
+  "executor-private-keys": "0xd913b09fcf00769619789d418eebdb8ad00fa7c6ef2078cee42cb51dc694fd74",
+  "utility-private-keys": "0x0b3d315c94798e1ad424948c9a9911156a8eadedea703b19b89a0dbaafedcfd3",
+  "rpc-url": "http://localhost:8545",
+  "port": 1234,
+  "safe-mode": false
+}
