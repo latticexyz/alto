@@ -63,7 +63,6 @@ import {
     isVersion06,
     isVersion07,
     maxBigInt,
-    parseUserOperationReceipt,
     scaleBigIntByPercent,
     toUnpackedUserOperation
 } from "@alto/utils"
@@ -1025,16 +1024,7 @@ export class RpcHandler implements IRpcEndpoint {
 
         this.executor.markWalletProcessed(res.value.transactionInfo.executor)
 
-        // wait for receipt
-        const receipt =
-            await this.config.publicClient.waitForTransactionReceipt({
-                hash: res.value.transactionInfo.transactionHash,
-                pollingInterval: 100
-            })
-
-        const userOperationReceipt = parseUserOperationReceipt(opHash, receipt)
-
-        return userOperationReceipt
+        return { transactionHash: res.value.transactionInfo.transactionHash, userOpHash: opHash };
     }
 
     async pimlico_sendCompressedUserOperation(
