@@ -578,9 +578,14 @@ const pimlicoSendCompressedUserOperationResponseSchema = z.object({
     result: hexData32Schema
 })
 
+const userOperationNowResultSchema = z.object({
+    transactionHash: hexData32Schema,
+    userOpHash: hexData32Schema
+})
+
 const pimlicoSendUserOperationNowResponseSchema = z.object({
     method: z.literal("pimlico_sendUserOperationNow"),
-    result: userOperationReceiptSchema
+    result: userOperationNowResultSchema 
 })
 
 const bundlerResponseSchema = z.discriminatedUnion("method", [
