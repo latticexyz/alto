@@ -43,15 +43,23 @@ const isDeployed = async (address: Address): Promise<boolean> => {
 };
 
 const ensureDeployed = async (
+  name: string,
   address: Address,
   deploy: () => Promise<Hex>
 ): Promise<void> => {
-  if (!(await isDeployed(address))) {
-    const txHash = await deploy();
-    await publicClient.waitForTransactionReceipt({ hash: txHash });
-    if (!(await isDeployed(address))) {
-      throw new Error(`Failed to deploy ${address}`);
-    }
+  console.log(`Checking if ${name} is deployed...`);
+  if (await isDeployed(address)) {
+    console.log(`${name} is already deployed`);
+    return;
+  }
+
+  console.log(`Deploying ${name}...`);
+  const txHash = await deploy();
+  await publicClient.waitForTransactionReceipt({ hash: txHash });
+  if (await isDeployed(address)) {
+    console.log(`Successfully deployed ${name}`);
+  } else {
+    throw new Error(`Failed to deploy ${name}`);
   }
 };
 
@@ -61,8 +69,7 @@ const main = async () => {
 
   const txs: Promise<void>[] = [];
 
-  await ensureDeployed(ENTRY_POINT_V07_ADDRESS, () => {
-    console.log("Deploying EntryPoint V0.7");
+  await ensureDeployed("EntryPoint V0.7", ENTRY_POINT_V07_ADDRESS, () => {
     return walletClient.sendTransaction({
       chain: null,
       to: DETERMINISTIC_DEPLOYER,
@@ -71,31 +78,33 @@ const main = async () => {
     });
   });
 
-  await ensureDeployed(SIMPLE_ACCOUNT_FACTORY_V07_ADDRESS, () => {
-    console.log("Deploying SimpleAccountFactory v0.7");
-    return walletClient.sendTransaction({
-      chain: null,
-      to: DETERMINISTIC_DEPLOYER,
-      data: SIMPLE_ACCOUNT_FACTORY_V07_CREATECALL,
-      gas: 15_000_000n,
-    });
-  });
+  await ensureDeployed(
+    "SimpleAccountFactory V0.7",
+    SIMPLE_ACCOUNT_FACTORY_V07_ADDRESS,
+    () => {
+      return walletClient.sendTransaction({
+        chain: null,
+        to: DETERMINISTIC_DEPLOYER,
+        data: SIMPLE_ACCOUNT_FACTORY_V07_CREATECALL,
+        gas: 15_000_000n,
+      });
+    }
+  );
 
-  await ensureDeployed(ENTRY_POINT_SIMULATIONS_ADDRESS, () => {
-    console.log("Deploying EntryPointSimulations");
-    return walletClient.sendTransaction({
-      chain: null,
-      to: DETERMINISTIC_DEPLOYER,
-      data: ENTRY_POINT_SIMULATIONS_CREATECALL,
-      gas: 15_000_000n,
-    });
-  });
+  await ensureDeployed(
+    "EntryPointSimulations",
+    ENTRY_POINT_SIMULATIONS_ADDRESS,
+    () => {
+      return walletClient.sendTransaction({
+        chain: null,
+        to: DETERMINISTIC_DEPLOYER,
+        data: ENTRY_POINT_SIMULATIONS_CREATECALL,
+        gas: 15_000_000n,
+      });
+    }
+  );
 
-  // biome-ignore lint/suspicious/noConsoleLog: []
-  console.log("========== DEPLOYING V0.6 CORE CONTRACTS ==========");
-
-  await ensureDeployed(ENTRY_POINT_V06_ADDRESS, () => {
-    console.log("Deploying EntryPoint v0.6");
+  await ensureDeployed("EntryPoint V0.6", ENTRY_POINT_V06_ADDRESS, () => {
     return walletClient.sendTransaction({
       chain: null,
       to: DETERMINISTIC_DEPLOYER,
@@ -104,15 +113,18 @@ const main = async () => {
     });
   });
 
-  await ensureDeployed(SIMPLE_ACCOUNT_FACTORY_V06_ADDRESS, () => {
-    console.log("Deploying SimpleAccountFactory v0.6");
-    return walletClient.sendTransaction({
-      chain: null,
-      to: DETERMINISTIC_DEPLOYER,
-      data: SIMPLE_ACCOUNT_FACTORY_V06_CREATECALL,
-      gas: 15_000_000n,
-    });
-  });
+  await ensureDeployed(
+    "SimpleAccountFactory V0.6",
+    SIMPLE_ACCOUNT_FACTORY_V06_ADDRESS,
+    () => {
+      return walletClient.sendTransaction({
+        chain: null,
+        to: DETERMINISTIC_DEPLOYER,
+        data: SIMPLE_ACCOUNT_FACTORY_V06_CREATECALL,
+        gas: 15_000_000n,
+      });
+    }
+  );
 
   console.log("Done!");
 };
