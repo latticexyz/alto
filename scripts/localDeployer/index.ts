@@ -75,7 +75,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: ENTRY_POINT_V07_CREATECALL,
       gas: 15_000_000n,
@@ -85,7 +85,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: SIMPLE_ACCOUNT_FACTORY_V07_CREATECALL,
       gas: 15_000_000n,
@@ -95,7 +95,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: ENTRY_POINT_SIMULATIONS_CREATECALL,
       gas: 15_000_000n,
@@ -108,7 +108,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: ENTRY_POINT_V06_CREATECALL,
       gas: 15_000_000n,
@@ -118,7 +118,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: SIMPLE_ACCOUNT_FACTORY_V06_CREATECALL,
       gas: 15_000_000n,
@@ -131,7 +131,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: SAFE_V06_MODULE_SETUP_CREATECALL,
       gas: 15_000_000n,
@@ -141,7 +141,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: SAFE_V06_MODULE_CREATECALL,
       gas: 15_000_000n,
@@ -151,7 +151,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: SAFE_V07_MODULE_SETUP_CREATECALL,
       gas: 15_000_000n,
@@ -161,7 +161,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: SAFE_V07_MODULE_CREATECALL,
       gas: 15_000_000n,
@@ -171,7 +171,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: SAFE_SINGLETON_FACTORY,
       data: SAFE_PROXY_FACTORY_CREATECALL,
       gas: 15_000_000n,
@@ -181,7 +181,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: SAFE_SINGLETON_FACTORY,
       data: SAFE_SINGLETON_CREATECALL,
       gas: 15_000_000n,
@@ -191,7 +191,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: SAFE_SINGLETON_FACTORY,
       data: SAFE_MULTI_SEND_CREATECALL,
       gas: 15_000_000n,
@@ -201,7 +201,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: SAFE_SINGLETON_FACTORY,
       data: SAFE_MULTI_SEND_CALL_ONLY_CREATECALL,
       gas: 15_000_000n,
@@ -214,7 +214,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: BICONOMY_SINGLETON_FACTORY,
       data: BICONOMY_ECDSA_OWNERSHIP_REGISTRY_MOUDULE_CREATECALL,
       gas: 15_000_000n,
@@ -224,7 +224,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: BICONOMY_SINGLETON_FACTORY,
       data: BICONOMY_ACCOUNT_V2_LOGIC_CREATECALL,
       gas: 15_000_000n,
@@ -234,7 +234,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: BICONOMY_SINGLETON_FACTORY,
       data: BICONOMY_FACTORY_CREATECALL,
       gas: 15_000_000n,
@@ -244,7 +244,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: BICONOMY_SINGLETON_FACTORY,
       data: BICONOMY_DEFAULT_FALLBACK_HANDLER_CREATECALL,
       gas: 15_000_000n,
@@ -257,7 +257,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: KERNEL_ECDSA_VALIDATOR_CREATECALL,
       gas: 15_000_000n,
@@ -267,7 +267,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: KERNEL_ACCOUNT_V2_2_LOGIC_CREATECALL,
       gas: 15_000_000n,
@@ -277,7 +277,7 @@ const main = async () => {
 
   txs.push(
     await walletClient.sendTransaction({
-      chain: undefined,
+      chain: null,
       to: DETERMINISTIC_DEPLOYER,
       data: KERNEL_FACTORY_CREATECALL,
       gas: 15_000_000n,
